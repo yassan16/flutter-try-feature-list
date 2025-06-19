@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_try_feature_list/routing.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return MaterialApp.router(routerConfig: Routing().router);
   }
 }
 
+// TODO: 名前をBaseに変更する
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key, required this.child});
+  final Widget child;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -37,24 +35,51 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  static const tabs = ['/a', '/b', '/c'];
+
+  /// Tabのインデックスを取得する
+  /// [location]はGoRouterStateのuri.toString()で取得できる
+  int _locationToIndex(String location) {
+    return tabs.indexWhere((path) => location.startsWith(path));
+  }
+
   @override
   Widget build(BuildContext context) {
+    final currentIndex = _locationToIndex(
+      GoRouterState.of(context).uri.toString(),
+    );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text('Flutter Demo Home Page'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+      body:
+          currentIndex == 1
+              ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text('You have pushed the button this many times:'),
+                    Text(
+                      '$_counter',
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                  ],
+                ),
+              )
+              : widget.child,
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'A'),
+          BottomNavigationBarItem(icon: Icon(Icons.business), label: 'B'),
+          BottomNavigationBarItem(icon: Icon(Icons.school), label: 'C'),
+        ],
+        currentIndex: currentIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: (index) {
+          context.go(tabs[index]);
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
