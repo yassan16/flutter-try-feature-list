@@ -1,7 +1,7 @@
+import 'package:flutter_try_feature_list/base_page.dart';
 import 'package:flutter_try_feature_list/common/presentation/screen_b.dart';
 import 'package:flutter_try_feature_list/common/presentation/screnn_a.dart';
 import 'package:flutter_try_feature_list/common/presentation/screnn_c.dart';
-import 'package:flutter_try_feature_list/main.dart';
 import 'package:go_router/go_router.dart';
 
 class Routing {
@@ -10,7 +10,7 @@ class Routing {
     routes: [
       ShellRoute(
         builder: (context, state, child) {
-          return MyHomePage(child: child);
+          return BasePage(child: child);
         },
         routes: [
           GoRoute(
