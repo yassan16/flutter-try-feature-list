@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class BasePage extends StatefulWidget {
-  const BasePage({super.key, required this.child});
+class BaseScreen extends StatefulWidget {
+  const BaseScreen({super.key, required this.child});
   final Widget child;
 
   @override
-  State<BasePage> createState() => _BasePageState();
+  State<BaseScreen> createState() => _BaseScreenState();
 }
 
-class _BasePageState extends State<BasePage> {
+class _BaseScreenState extends State<BaseScreen> {
   int _counter = 0;
 
   void _incrementCounter() {

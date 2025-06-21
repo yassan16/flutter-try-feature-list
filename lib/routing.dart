@@ -1,4 +1,4 @@
-import 'package:flutter_try_feature_list/base_page.dart';
+import 'package:flutter_try_feature_list/common/presentation/screens/base_screen.dart';
 import 'package:flutter_try_feature_list/common/presentation/screen_b.dart';
 import 'package:flutter_try_feature_list/common/presentation/screnn_a.dart';
 import 'package:flutter_try_feature_list/common/presentation/screnn_c.dart';
@@ -10,7 +10,7 @@ class Routing {
     routes: [
       ShellRoute(
         builder: (context, state, child) {
-          return BasePage(child: child);
+          return BaseScreen(child: child);
         },
         routes: [
           GoRoute(
