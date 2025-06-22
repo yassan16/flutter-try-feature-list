@@ -1,35 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter_try_feature_list/common/presentation/controllers/bottom_navigation_bar_index_notifier.dart';
 import 'package:go_router/go_router.dart';
 
-class BaseScreen extends StatefulWidget {
+class BaseScreen extends ConsumerStatefulWidget {
   const BaseScreen({super.key, required this.child});
   final Widget child;
 
   @override
-  State<BaseScreen> createState() => _BaseScreenState();
+  ConsumerState<BaseScreen> createState() => _BaseScreenState();
 }
 
-class _BaseScreenState extends State<BaseScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class _BaseScreenState extends ConsumerState<BaseScreen> {
   static const tabs = ['/a', '/b', '/c'];
-
-  /// Tabのインデックスを取得する
-  /// [location]はGoRouterStateのuri.toString()で取得できる
-  int _locationToIndex(String location) {
-    return tabs.indexWhere((path) => location.startsWith(path));
-  }
 
   @override
   Widget build(BuildContext context) {
-    final currentIndex = _locationToIndex(
-      GoRouterState.of(context).uri.toString(),
+    final bottomNavigationBarIndex = ref.watch(
+      bottomNavigationBarIndexNotifierProvider,
     );
 
     return Scaffold(
@@ -37,37 +26,40 @@ class _BaseScreenState extends State<BaseScreen> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Flutter Demo Home Page'),
       ),
-      body:
-          currentIndex == 1
-              ? Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text('You have pushed the button this many times:'),
-                    Text(
-                      '$_counter',
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                  ],
-                ),
-              )
-              : widget.child,
+      body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'A'),
-          BottomNavigationBarItem(icon: Icon(Icons.business), label: 'B'),
-          BottomNavigationBarItem(icon: Icon(Icons.school), label: 'C'),
-        ],
-        currentIndex: currentIndex,
+        currentIndex: bottomNavigationBarIndex,
         selectedItemColor: Colors.amber[800],
         onTap: (index) {
+          ref
+              .read(bottomNavigationBarIndexNotifierProvider.notifier)
+              .setIndex(index);
           context.go(tabs[index]);
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        items: <BottomNavigationBarItem>[
+          // Features
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Features',
+          ),
+          // Mapbox
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/ic_map.svg',
+              width: 24,
+              height: 24,
+              colorFilter: ColorFilter.mode(
+                bottomNavigationBarIndex == 1
+                    ? Colors.amber[800]!
+                    : Colors.grey,
+                BlendMode.srcIn,
+              ),
+            ),
+            label: 'Map',
+          ),
+          // 予備
+          const BottomNavigationBarItem(icon: Icon(Icons.school), label: 'C'),
+        ],
       ),
     );
   }
