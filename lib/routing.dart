@@ -1,6 +1,6 @@
 import 'package:flutter_try_feature_list/common/presentation/screens/base_screen.dart';
 import 'package:flutter_try_feature_list/mapbox/presentation/mapbox_screen.dart';
-import 'package:flutter_try_feature_list/features/presentation/screnn_a.dart';
+import 'package:flutter_try_feature_list/features/001_a/screnn_a.dart';
 import 'package:flutter_try_feature_list/common/presentation/screens/screnn_c.dart';
 import 'package:go_router/go_router.dart';
 
