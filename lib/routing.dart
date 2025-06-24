@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_try_feature_list/common/presentation/screens/base_screen.dart';
 import 'package:flutter_try_feature_list/mapbox/presentation/mapbox_screen.dart';
-import 'package:flutter_try_feature_list/features/001_a/screnn_a.dart';
+import 'package:flutter_try_feature_list/features/001_provider_verification/provider_verification_screen.dart';
 import 'package:flutter_try_feature_list/common/presentation/screens/screnn_c.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,13 +16,14 @@ final spareNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'spare');
 /// アプリのルーティングを管理するクラス
 class Routing {
   // ルーティングのパスを定義
-  static final String aScreenRouter = '/a';
+  static final String providerVerificationScreen001Router =
+      '/providerVerificationScreen001';
   static final String bScreenRouter = '/b';
   static final String cScreenRouter = '/c';
 
   final router = GoRouter(
     navigatorKey: rootNavigatorKey,
-    initialLocation: aScreenRouter,
+    initialLocation: providerVerificationScreen001Router,
     routes: [
       StatefulShellRoute.indexedStack(
         parentNavigatorKey: rootNavigatorKey,
@@ -35,10 +36,11 @@ class Routing {
             navigatorKey: featuresNavigatorKey,
             routes: [
               GoRoute(
-                path: aScreenRouter,
+                path: providerVerificationScreen001Router,
                 pageBuilder:
-                    (context, state) =>
-                        const NoTransitionPage(child: ScreenA()),
+                    (context, state) => const NoTransitionPage(
+                      child: ProviderVerificationScreen001(),
+                    ),
               ),
             ],
           ),

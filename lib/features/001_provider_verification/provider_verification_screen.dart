@@ -1,17 +1,17 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_try_feature_list/features/001_a/notifier_list.dart';
+import 'package:flutter_try_feature_list/features/001_provider_verification/notifier_list.dart';
 
-class ScreenA extends ConsumerStatefulWidget {
-  const ScreenA({super.key});
+class ProviderVerificationScreen001 extends ConsumerStatefulWidget {
+  const ProviderVerificationScreen001({super.key});
 
   @override
-  ConsumerState<ScreenA> createState() => _ScreenAState();
+  ConsumerState<ProviderVerificationScreen001> createState() =>
+      _ProviderVerificationScreen001State();
 }
 
-class _ScreenAState extends ConsumerState<ScreenA> {
+class _ProviderVerificationScreen001State
+    extends ConsumerState<ProviderVerificationScreen001> {
   @override
   Widget build(BuildContext context) {
     print("【ScreenA】buildが、呼ばれました");
