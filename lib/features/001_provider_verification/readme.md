@@ -29,3 +29,25 @@ flutter: 【ScreenA】buildが、呼ばれました
 flutter: 【ScreenA】B_Notifierの値: 101
 flutter: ===========================================
 ```
+
+
+## 疑問：なぜ2回目に表示されるProviderVerificationScreen001で依存しているProviderは初期化されるのか？
+ProviderVerificationScreen001 → BaseScreen → ProviderVerificationScreen001と遷移した時
+
+### 理由
+「ProviderVerificationScreen001」が、Navigatorのスタックから削除されたタイミングで、その画面でのみ使われていたProviderもDispose（破棄）されるため。
+
+* 画面がスタックから消える＝その画面でしか参照されていないProviderもDisposeされる
+* 再度画面を開く＝Providerも再初期化される
+
+### 詳細
+1. RiverpodのProviderスコープ
+  * RiverpodのProviderは、参照しているWidgetがツリー上から消えると自動的にDisposeされる（デフォルトのProviderScopeの挙動）。
+  * 画面遷移でProviderVerificationScreen001がNavigatorのスタックから外れると、その画面でしか使われていないProviderもDisposeされる。
+
+2. GoRouterとNavigatorの挙動
+  * GoRouteで画面遷移すると、前の画面（ProviderVerificationScreen001）はNavigatorのスタックから削除される（popやpushReplacementなど）。
+  * そのため、画面に依存しているProviderも破棄される。
+
+3. 再度遷移した場合
+  * 再びProviderVerificationScreen001に遷移すると、その画面で使われているProviderは新しく初期化される。

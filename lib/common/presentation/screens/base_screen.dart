@@ -19,10 +19,6 @@ class _BaseScreenState extends ConsumerState<BaseScreen> {
     final navigationShell = widget.navigationShell;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Flutter Demo Home Page'),
-      ),
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
         selectedIndex: navigationShell.currentIndex,
