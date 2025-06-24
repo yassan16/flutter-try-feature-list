@@ -1,65 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_try_feature_list/common/presentation/controllers/bottom_navigation_bar_index_notifier.dart';
 import 'package:go_router/go_router.dart';
 
+/// 各 Branch の ベースとなる画面
 class BaseScreen extends ConsumerStatefulWidget {
-  const BaseScreen({super.key, required this.child});
-  final Widget child;
+  const BaseScreen({super.key, required this.navigationShell});
+  final StatefulNavigationShell navigationShell;
 
   @override
   ConsumerState<BaseScreen> createState() => _BaseScreenState();
 }
 
 class _BaseScreenState extends ConsumerState<BaseScreen> {
-  static const tabs = ['/a', '/b', '/c'];
-
   @override
   Widget build(BuildContext context) {
-    final bottomNavigationBarIndex = ref.watch(
-      bottomNavigationBarIndexNotifierProvider,
-    );
+    // 「widget.」を毎回つけるのは冗長なので、変数に代入
+    final navigationShell = widget.navigationShell;
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Flutter Demo Home Page'),
       ),
-      body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: bottomNavigationBarIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: (index) {
-          ref
-              .read(bottomNavigationBarIndexNotifierProvider.notifier)
-              .setIndex(index);
-          context.go(tabs[index]);
-        },
-        items: <BottomNavigationBarItem>[
+      body: navigationShell,
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: navigationShell.currentIndex,
+        destinations: [
           // Features
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+          const NavigationDestination(
+            icon: Icon(Icons.list),
             label: 'Features',
           ),
           // Mapbox
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: SvgPicture.asset(
               'assets/icons/ic_map.svg',
               width: 24,
               height: 24,
-              colorFilter: ColorFilter.mode(
-                bottomNavigationBarIndex == 1
-                    ? Colors.amber[800]!
-                    : Colors.grey,
-                BlendMode.srcIn,
-              ),
+              colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn),
             ),
-            label: 'Map',
+            label: 'Mapbox',
           ),
           // 予備
-          const BottomNavigationBarItem(icon: Icon(Icons.school), label: 'C'),
+          const NavigationDestination(
+            icon: Icon(Icons.inventory_2),
+            label: 'XXX',
+          ),
         ],
+        onDestinationSelected: (index) {
+          navigationShell.goBranch(
+            index,
+            initialLocation: index == navigationShell.currentIndex,
+          );
+        },
       ),
     );
   }
