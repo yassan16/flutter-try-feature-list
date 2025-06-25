@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_try_feature_list/common/presentation/screens/base_screen.dart';
+import 'package:flutter_try_feature_list/features/01_widget_tree/001_parent_child_widget_rebuild/parent_child_widget_rebuild_screen.dart';
 import 'package:flutter_try_feature_list/features/features_screen.dart';
 import 'package:flutter_try_feature_list/mapbox/presentation/mapbox_screen.dart';
-import 'package:flutter_try_feature_list/features/001_provider_verification/provider_verification_screen.dart';
+import 'package:flutter_try_feature_list/features/04_riverpod/001_provider_verification/provider_verification_screen.dart';
 import 'package:flutter_try_feature_list/common/presentation/screens/screnn_c.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,11 +17,20 @@ final spareNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'spare');
 
 /// アプリのルーティングを管理するクラス
 class Routing {
-  // ルーティングのパスを定義
+  // Features Branch
   static final String featuresScreenRouter = '/features';
-  static final String providerVerificationScreen001Router =
-      '/providerVerificationScreen001';
+  // 01_widget_tree
+  static final String route_01 = '/01_widget_tree';
+  static final String route_01_001 =
+      '$route_01/001_parent_child_widget_rebuild';
+  // 04_riverpod
+  static final String route_04 = '/04_riverpod';
+  static final String route_04_001 = '$route_04/001_providerVerification';
+
+  // Mapbox Branch
   static final String bScreenRouter = '/b';
+
+  // 予備 Branch
   static final String cScreenRouter = '/c';
 
   final router = GoRouter(
@@ -43,8 +53,15 @@ class Routing {
                     (context, state) =>
                         const NoTransitionPage(child: FeaturesScreen()),
                 routes: [
+                  // 01_widget_tree
                   GoRoute(
-                    path: providerVerificationScreen001Router,
+                    path: route_01_001,
+                    builder:
+                        (context, state) => ParentChildWidgetRebuild001Screen(),
+                  ),
+                  // 04_riverpod
+                  GoRoute(
+                    path: route_04_001,
                     builder:
                         (context, state) => ProviderVerificationScreen001(),
                   ),

@@ -31,7 +31,7 @@ flutter: ===========================================
 ```
 
 
-## 疑問：なぜ2回目に表示されるProviderVerificationScreen001で依存しているProviderは初期化されるのか？
+## 疑問：なぜ2回目に表示されるProviderVerificationScreen001で依存しているProviderは、初期化されるのか？
 ProviderVerificationScreen001 → BaseScreen → ProviderVerificationScreen001と遷移した時
 
 ### 理由

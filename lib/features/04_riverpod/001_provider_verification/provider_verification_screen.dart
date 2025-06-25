@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_try_feature_list/features/001_provider_verification/notifier_list.dart';
+import 'package:flutter_try_feature_list/features/04_riverpod/001_provider_verification/notifier_list.dart';
 
 class ProviderVerificationScreen001 extends ConsumerStatefulWidget {
   const ProviderVerificationScreen001({super.key});
