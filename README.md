@@ -96,3 +96,12 @@ GitHub Actions / Codemagic などでの自動化
 5. DBやAPIとの連携
 6. アーキテクチャ・設計力の習得
 7. テスト・パフォーマンス・CI/CDなど運用面の強化
+
+x. ライフサイクル(メモ)
+| メソッド名 | 説明 |
+| ---- | ---- |
+| initState() | 小規模な非同期UIに便利。1回の読み込みなど |
+| didChangeDependencies() | 直接状態を管理する。やや手動感あり |
+| build() | 再描画ごとに呼ばれる。UIを定義する。|
+| setState() | 呼び出すとbuild()が再実行されてUIが更新される。|
+| dispose() | 	破棄されるときに呼ばれる。ControllerやListenerの解放に使う。|
