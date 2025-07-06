@@ -37,6 +37,21 @@ class _FeaturesScreenState extends State<FeaturesScreen> {
               style: TextStyle(fontSize: 20),
             ),
           ),
+          // 02_001 Httpパッケージを使ったAPI呼び出し検証
+          ElevatedButton(
+            onPressed: () {
+              String router =
+                  Routing.featuresScreenRouter + Routing.route_02_001;
+              GoRouter.of(context).go(router);
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text('パス： $router')));
+            },
+            child: const Text(
+              '02_001 Httpパッケージを使ったAPI呼び出し検証',
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
           // 04_001 Providerの再ビルド検証
           ElevatedButton(
             onPressed: () {

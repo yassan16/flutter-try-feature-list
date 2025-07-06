@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_try_feature_list/common/presentation/screens/base_screen.dart';
 import 'package:flutter_try_feature_list/features/01_widget_tree/001_parent_child_widget_rebuild/parent_child_widget_rebuild_screen.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/001_http/presentation/http_screen.dart';
 import 'package:flutter_try_feature_list/features/features_screen.dart';
 import 'package:flutter_try_feature_list/mapbox/presentation/mapbox_screen.dart';
 import 'package:flutter_try_feature_list/features/04_riverpod/001_provider_verification/provider_verification_screen.dart';
@@ -23,6 +24,9 @@ class Routing {
   static final String route_01 = '/01_widget_tree';
   static final String route_01_001 =
       '$route_01/001_parent_child_widget_rebuild';
+  // 02_future_stream
+  static final String route_02 = '/02_future_stream';
+  static final String route_02_001 = '$route_02/001_http';
   // 04_riverpod
   static final String route_04 = '/04_riverpod';
   static final String route_04_001 = '$route_04/001_providerVerification';
@@ -58,6 +62,11 @@ class Routing {
                     path: route_01_001,
                     builder:
                         (context, state) => ParentChildWidgetRebuild001Screen(),
+                  ),
+                  // 02_future_stream
+                  GoRoute(
+                    path: route_02_001,
+                    builder: (context, state) => HttpScreen(),
                   ),
                   // 04_riverpod
                   GoRoute(

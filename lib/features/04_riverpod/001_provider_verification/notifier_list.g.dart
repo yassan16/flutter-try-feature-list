@@ -6,7 +6,7 @@ part of 'notifier_list.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$aNotifierHash() => r'20b56d6796f7b7b7b3d61bd870ed0984b37f6e92';
+String _$aNotifierHash() => r'87ec1df8c9aec81e8c18f46afe9186b170972c2d';
 
 /// See also [ANotifier].
 @ProviderFor(ANotifier)
@@ -20,7 +20,7 @@ final aNotifierProvider = AutoDisposeNotifierProvider<ANotifier, int>.internal(
 );
 
 typedef _$ANotifier = AutoDisposeNotifier<int>;
-String _$bNotifierHash() => r'da7e7d6b10a27ef5b96ea3e16fd40c51037cbded';
+String _$bNotifierHash() => r'cee46bd9535ab3b14cee03e7ef7f0d3f8e4855ab';
 
 /// See also [BNotifier].
 @ProviderFor(BNotifier)
