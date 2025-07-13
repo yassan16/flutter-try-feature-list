@@ -1,9 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/001_http/repository/dto/pokemon_dto.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_try_feature_list/features/02_future_stream/001_http/application/get_pokemon_usecase.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/001_http/infrastructure/dto/pokemon_dto.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/001_http/infrastructure/repository/pokemon_repositoryImpl.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/001_http/infrastructure/service/pokemon_service.dart';
 
 class HttpScreen extends ConsumerStatefulWidget {
   const HttpScreen({super.key});
@@ -14,6 +14,9 @@ class HttpScreen extends ConsumerStatefulWidget {
 
 class _HttpScreenState extends ConsumerState<HttpScreen> {
   PokemonDto? pokemon;
+  GetPokemonUsecase getPokemonUsecase = GetPokemonUsecase(
+    PokemonRepositoryimpl(PokemonService()),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +28,7 @@ class _HttpScreenState extends ConsumerState<HttpScreen> {
           children: [
             ElevatedButton(
               onPressed: () async {
-                final response = await http.get(
-                  Uri.parse('https://pokeapi.co/api/v2/pokemon/1/'),
-                );
-                if (response.statusCode == 200) {
-                  pokemon = PokemonDto.fromJson(jsonDecode(response.body));
-                }
+                pokemon = await getPokemonUsecase.execute();
                 setState(() {
                   print(pokemon.toString());
                 });
