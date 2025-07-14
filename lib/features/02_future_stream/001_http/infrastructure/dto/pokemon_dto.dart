@@ -4,6 +4,8 @@ part 'pokemon_dto.freezed.dart';
 part 'pokemon_dto.g.dart';
 
 // v3からabstractを付ける必要がある!!
+// https://github.com/rrousselGit/freezed/blob/master/packages/freezed/migration_guide.md
+
 @freezed
 abstract class PokemonDto with _$PokemonDto {
   factory PokemonDto({

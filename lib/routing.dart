@@ -20,13 +20,17 @@ final spareNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'spare');
 class Routing {
   // Features Branch
   static final String featuresScreenRouter = '/features';
+
   // 01_widget_tree
   static final String route_01 = '/01_widget_tree';
   static final String route_01_001 =
       '$route_01/001_parent_child_widget_rebuild';
+
   // 02_future_stream
   static final String route_02 = '/02_future_stream';
   static final String route_02_001 = '$route_02/001_http';
+  static final String route_02_002 = '$route_02/002_dio';
+
   // 04_riverpod
   static final String route_04 = '/04_riverpod';
   static final String route_04_001 = '$route_04/001_providerVerification';
@@ -68,6 +72,10 @@ class Routing {
                     path: route_02_001,
                     builder: (context, state) => HttpScreen(),
                   ),
+                  // GoRoute(
+                  //   path: route_02_002,
+                  //   builder: (context, state) => DioScreen(),
+                  // ),
                   // 04_riverpod
                   GoRoute(
                     path: route_04_001,

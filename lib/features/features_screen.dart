@@ -39,6 +39,16 @@ class _FeaturesScreenState extends State<FeaturesScreen> {
         },
       },
       {
+        'text': '02_002 Dioパッケージを使ったAPI呼び出し検証',
+        'onPressed': () {
+          String router = Routing.featuresScreenRouter + Routing.route_02_002;
+          GoRouter.of(context).go(router);
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('パス： $router')));
+        },
+      },
+      {
         'text': '04_001 Providerの再ビルド検証',
         'onPressed': () {
           String router = Routing.featuresScreenRouter + Routing.route_04_001;
