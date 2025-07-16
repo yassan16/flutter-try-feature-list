@@ -7,7 +7,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // MapboxのAPIキーを設定
-  MapboxOptions.setAccessToken(String.fromEnvironment("ACCESS_TOKEN"));
+  String accessToken = String.fromEnvironment("ACCESS_TOKEN");
+  MapboxOptions.setAccessToken(accessToken);
 
   runApp(ProviderScope(child: MyApp()));
 }
