@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/application/get_pokemon_usecase.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dto/pokemon_dto.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/repository/pokemon_repositoryImpl.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/service/pokemon_service.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/presentation/pokemon_notifier.dart';
 
 class DioScreen extends ConsumerStatefulWidget {
   const DioScreen({super.key});
@@ -13,13 +10,10 @@ class DioScreen extends ConsumerStatefulWidget {
 }
 
 class _DioScreenState extends ConsumerState<DioScreen> {
-  PokemonDto? pokemon;
-  GetPokemonUsecase getPokemonUsecase = GetPokemonUsecase(
-    PokemonRepositoryimpl(PokemonService()),
-  );
-
   @override
   Widget build(BuildContext context) {
+    final pokemon = ref.watch(pokemonNotifierProvider);
+
     return Scaffold(
       body: Align(
         alignment: Alignment.center,
@@ -28,27 +22,24 @@ class _DioScreenState extends ConsumerState<DioScreen> {
           children: [
             ElevatedButton(
               onPressed: () async {
-                pokemon = await getPokemonUsecase.execute();
-                setState(() {
-                  print(pokemon.toString());
-                });
+                ref.read(pokemonNotifierProvider.notifier).evolvePokemon();
               },
-              child: const Text("API呼び出し"),
+              child: const Text("進化!!!"),
             ),
-            if (pokemon != null)
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('ID: ${pokemon!.id}'),
-                  Text('Name: ${pokemon!.name}'),
-                  Text('Height: ${pokemon!.height}'),
-                  Text('Weight: ${pokemon!.weight}'),
-                  Image.network(
-                    pokemon!.sprites['other']['showdown']['front_default'],
-                    width: 100.0,
-                  ),
-                ],
-              ),
+            pokemon.when(
+              data: (data) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('ID: ${data.id}'),
+                    Text('Name: ${data.name}'),
+                    Image.network(data.url, width: 100.0),
+                  ],
+                );
+              },
+              error: (error, StackTrace) => const Text("エラー"),
+              loading: () => const Center(child: CircularProgressIndicator()),
+            ),
           ],
         ),
       ),

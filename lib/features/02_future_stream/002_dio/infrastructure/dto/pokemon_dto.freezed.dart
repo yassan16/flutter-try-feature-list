@@ -16,7 +16,14 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PokemonDto {
 
- int get id; String get name;@JsonKey(name: 'base_experience') int get baseExperience; int get height;@JsonKey(name: 'is_default') bool get isDefault; int get order; int get weight; List<dynamic> get abilities; List<dynamic> get forms;@JsonKey(name: 'game_indices') List<dynamic> get gameIndices;@JsonKey(name: 'held_items') List<dynamic> get heldItems;@JsonKey(name: 'location_area_encounters') String get locationAreaEncounters; List<dynamic> get moves;@JsonKey(name: 'past_types') List<dynamic> get pastTypes;@JsonKey(name: 'past_abilities') List<dynamic> get pastAbilities; Map<String, dynamic> get sprites; Map<String, dynamic> get cries; Map<String, dynamic> get species; List<dynamic> get stats; List<dynamic> get types;
+ int get id; String get name;// ignore: invalid_annotation_target
+@JsonKey(name: 'base_experience') int get baseExperience; int get height;// ignore: invalid_annotation_target
+@JsonKey(name: 'is_default') bool get isDefault; int get order; int get weight; List<dynamic> get abilities; List<dynamic> get forms;// ignore: invalid_annotation_target
+@JsonKey(name: 'game_indices') List<dynamic> get gameIndices;// ignore: invalid_annotation_target
+@JsonKey(name: 'held_items') List<dynamic> get heldItems;// ignore: invalid_annotation_target
+@JsonKey(name: 'location_area_encounters') String get locationAreaEncounters; List<dynamic> get moves;// ignore: invalid_annotation_target
+@JsonKey(name: 'past_types') List<dynamic> get pastTypes;// ignore: invalid_annotation_target
+@JsonKey(name: 'past_abilities') List<dynamic> get pastAbilities; Map<String, dynamic> get sprites; Map<String, dynamic> get cries; Map<String, dynamic> get species; List<dynamic> get stats; List<dynamic> get types;
 /// Create a copy of PokemonDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -104,8 +111,10 @@ class _PokemonDto implements PokemonDto {
 
 @override final  int id;
 @override final  String name;
+// ignore: invalid_annotation_target
 @override@JsonKey(name: 'base_experience') final  int baseExperience;
 @override final  int height;
+// ignore: invalid_annotation_target
 @override@JsonKey(name: 'is_default') final  bool isDefault;
 @override final  int order;
 @override final  int weight;
@@ -123,20 +132,25 @@ class _PokemonDto implements PokemonDto {
   return EqualUnmodifiableListView(_forms);
 }
 
+// ignore: invalid_annotation_target
  final  List<dynamic> _gameIndices;
+// ignore: invalid_annotation_target
 @override@JsonKey(name: 'game_indices') List<dynamic> get gameIndices {
   if (_gameIndices is EqualUnmodifiableListView) return _gameIndices;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_gameIndices);
 }
 
+// ignore: invalid_annotation_target
  final  List<dynamic> _heldItems;
+// ignore: invalid_annotation_target
 @override@JsonKey(name: 'held_items') List<dynamic> get heldItems {
   if (_heldItems is EqualUnmodifiableListView) return _heldItems;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_heldItems);
 }
 
+// ignore: invalid_annotation_target
 @override@JsonKey(name: 'location_area_encounters') final  String locationAreaEncounters;
  final  List<dynamic> _moves;
 @override List<dynamic> get moves {
@@ -145,14 +159,18 @@ class _PokemonDto implements PokemonDto {
   return EqualUnmodifiableListView(_moves);
 }
 
+// ignore: invalid_annotation_target
  final  List<dynamic> _pastTypes;
+// ignore: invalid_annotation_target
 @override@JsonKey(name: 'past_types') List<dynamic> get pastTypes {
   if (_pastTypes is EqualUnmodifiableListView) return _pastTypes;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_pastTypes);
 }
 
+// ignore: invalid_annotation_target
  final  List<dynamic> _pastAbilities;
+// ignore: invalid_annotation_target
 @override@JsonKey(name: 'past_abilities') List<dynamic> get pastAbilities {
   if (_pastAbilities is EqualUnmodifiableListView) return _pastAbilities;
   // ignore: implicit_dynamic_type

@@ -1,3 +1,4 @@
+import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'pokemon_dto.freezed.dart';
@@ -41,4 +42,14 @@ abstract class PokemonDto with _$PokemonDto {
 
   factory PokemonDto.fromJson(Map<String, dynamic> json) =>
       _$PokemonDtoFromJson(json);
+}
+
+// DTO → Entity
+extension PokemonDtoMapper on PokemonDto {
+  Pokemon toEntity() => Pokemon(
+    id: id,
+    name: name,
+    url: sprites['other']['showdown']['front_default'],
+    nextEvolutionId: id + 1, // 仮の進化ID
+  );
 }
