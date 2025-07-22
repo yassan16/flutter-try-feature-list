@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/application/evolve_pokemon_usecase_provider.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/application/get_pokemon_usecase.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dio_client.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/repository/pokemon_repositoryImpl.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/service/pokemon_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -10,7 +11,7 @@ part 'pokemon_provider.g.dart';
 
 /// 各層の依存関係を管理するProvider
 @riverpod
-Dio dio(Ref ref) => Dio();
+Dio dio(Ref ref) => DioClient().dio;
 
 @riverpod
 PokemonService pokemonService(Ref ref) =>
