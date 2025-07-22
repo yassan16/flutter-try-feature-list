@@ -1,5 +1,5 @@
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/presentation/pokemon_provider.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/presentation/provider/pokemon_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'pokemon_notifier.g.dart';
