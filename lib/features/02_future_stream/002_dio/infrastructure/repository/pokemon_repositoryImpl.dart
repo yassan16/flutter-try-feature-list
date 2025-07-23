@@ -1,10 +1,10 @@
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon_repository.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dto/pokemon_dto.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/service/pokemon_service.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/api_client/pokemon_api_client.dart';
 
 class PokemonRepositoryimpl extends PokemonRepository {
-  final PokemonService service;
+  final PokemonApiClient service;
   PokemonRepositoryimpl(this.service);
 
   @override

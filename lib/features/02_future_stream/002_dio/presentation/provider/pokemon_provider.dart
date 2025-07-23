@@ -4,7 +4,7 @@ import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/appli
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/application/get_pokemon_usecase.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dio_client.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/repository/pokemon_repositoryImpl.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/service/pokemon_service.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/api_client/pokemon_api_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'pokemon_provider.g.dart';
@@ -14,8 +14,8 @@ part 'pokemon_provider.g.dart';
 Dio dio(Ref ref) => DioClient().dio;
 
 @riverpod
-PokemonService pokemonService(Ref ref) =>
-    PokemonService(ref.watch(dioProvider));
+PokemonApiClient pokemonService(Ref ref) =>
+    PokemonApiClient(ref.watch(dioProvider));
 
 @riverpod
 PokemonRepositoryimpl pokemonRepositoryimpl(Ref ref) =>

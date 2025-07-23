@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dto/pokemon_dto.dart';
 
-class PokemonService {
+class PokemonApiClient {
   Dio dio;
-  PokemonService(this.dio);
+  PokemonApiClient(this.dio);
 
   Future<PokemonDto> getPokemon() async {
     final response = await dio.get('https://pokeapi.co/api/v2/pokemon/4/');

@@ -26,7 +26,7 @@ String _$pokemonServiceHash() => r'35f31863aeb26374267cbc21ca9cb5a775adfab8';
 
 /// See also [pokemonService].
 @ProviderFor(pokemonService)
-final pokemonServiceProvider = AutoDisposeProvider<PokemonService>.internal(
+final pokemonServiceProvider = AutoDisposeProvider<PokemonApiClient>.internal(
   pokemonService,
   name: r'pokemonServiceProvider',
   debugGetCreateSourceHash:
@@ -39,7 +39,7 @@ final pokemonServiceProvider = AutoDisposeProvider<PokemonService>.internal(
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef PokemonServiceRef = AutoDisposeProviderRef<PokemonService>;
+typedef PokemonServiceRef = AutoDisposeProviderRef<PokemonApiClient>;
 String _$pokemonRepositoryimplHash() =>
     r'445fe6d6f3b5d720022d88b1006d88cfe3eadb05';
 
