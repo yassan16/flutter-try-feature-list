@@ -3,14 +3,14 @@ import 'package:dio/dio.dart';
 class SampleInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    print('===== Sample Request =====');
+    print('===== SampleInterceptor Request =====');
     print('SampleInterceptor が呼び出されました');
     return handler.next(options);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    print('===== Sample Response =====');
+    print('===== SampleInterceptor Response =====');
     print('SampleInterceptor が呼び出されました');
     return handler.next(response);
   }

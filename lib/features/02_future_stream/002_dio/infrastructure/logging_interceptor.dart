@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 class LoggingInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    print('===== Request =====');
+    print('===== LoggingInterceptor Request =====');
     print('Method: ${options.method}');
     print('URL: ${options.baseUrl}${options.path}');
     print('Headers: ${options.headers}');
@@ -12,7 +12,7 @@ class LoggingInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    print('===== Response =====');
+    print('===== LoggingInterceptor Response =====');
     print('StatusCode: ${response.statusCode}');
     print('Data: ${response.data}');
     return handler.next(response);
