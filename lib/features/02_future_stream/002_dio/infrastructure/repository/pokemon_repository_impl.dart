@@ -24,7 +24,7 @@ class PokemonRepositoryimpl extends PokemonRepository {
     } on DioException catch (e) {
       print('DioExceptionをキャッチ: ${e.message}');
       if (e.response?.statusCode == 404) {
-        return Left(NotFoundFailure('Evolved Pokémon not found'));
+        return Left(NotFoundFailure('これ以上進化できません'));
       } else {
         return Left(
           NetworkFailure('Failed to fetch evolved Pokémon: ${e.message}'),
