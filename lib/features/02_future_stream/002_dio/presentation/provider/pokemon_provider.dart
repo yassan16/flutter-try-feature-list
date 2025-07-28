@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/application/evolve_pokemon_usecase_provider.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/application/get_pokemon_usecase.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dio_client.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/repository/pokemon_repositoryImpl.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/repository/pokemon_repository_impl.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/api_client/pokemon_api_client.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

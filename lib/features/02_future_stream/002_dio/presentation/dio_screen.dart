@@ -37,7 +37,7 @@ class _DioScreenState extends ConsumerState<DioScreen> {
                   ],
                 );
               },
-              error: (error, StackTrace) => const Text("エラー"),
+              error: (error, _) => Center(child: Text(error.toString())),
               loading: () => const Center(child: CircularProgressIndicator()),
             ),
           ],

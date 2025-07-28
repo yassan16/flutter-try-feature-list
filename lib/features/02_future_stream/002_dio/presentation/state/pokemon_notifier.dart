@@ -14,10 +14,16 @@ class PokemonNotifier extends _$PokemonNotifier {
 
   Future<void> evolvePokemon() async {
     try {
-      final pokemon = await ref
-          .read(evolvePokemonUsecaseProvider)
-          .evolvePokemon(state.value!);
-      state = AsyncData(pokemon);
+      state = const AsyncLoading();
+      state = await AsyncValue.guard(() async {
+        final result = await ref
+            .read(evolvePokemonUsecaseProvider)
+            .evolvePokemon(state.value!);
+        return result.match(
+          (failure) => throw Exception(failure.message),
+          (data) => data,
+        );
+      });
     } catch (e) {
       state = AsyncError(e, StackTrace.current);
     }

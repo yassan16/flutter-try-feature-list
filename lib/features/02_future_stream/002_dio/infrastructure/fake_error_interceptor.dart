@@ -16,14 +16,14 @@ class FakeErrorInterceptor extends Interceptor {
     print('FakeErrorInterceptor が呼び出されました');
     print('count: $_count');
 
-    if (_count % 3 == 0) {
+    if (_count % 4 == 0) {
       return handler.reject(
         DioException.badResponse(
-          statusCode: 401,
+          statusCode: 404,
           requestOptions: response.requestOptions,
           response: Response(
             requestOptions: response.requestOptions,
-            statusCode: 401,
+            statusCode: 404,
             data: 'Fake error が発生しました',
           ),
         ),

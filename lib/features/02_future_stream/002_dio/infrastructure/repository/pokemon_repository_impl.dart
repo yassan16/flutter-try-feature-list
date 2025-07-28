@@ -1,7 +1,10 @@
+import 'package:dio/dio.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/failure.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon_repository.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dto/pokemon_dto.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/api_client/pokemon_api_client.dart';
+import 'package:fpdart/fpdart.dart';
 
 class PokemonRepositoryimpl extends PokemonRepository {
   final PokemonApiClient service;
@@ -14,8 +17,19 @@ class PokemonRepositoryimpl extends PokemonRepository {
   }
 
   @override
-  Future<Pokemon> getEvlovePokemon(int id) async {
-    final pokemonDto = await service.getEvlovePokemon(id.toString());
-    return pokemonDto.toEntity();
+  Future<Result<Pokemon>> getEvlovePokemon(int id) async {
+    try {
+      final pokemonDto = await service.getEvlovePokemon(id.toString());
+      return Right(pokemonDto.toEntity());
+    } on DioException catch (e) {
+      print('DioExceptionをキャッチ: ${e.message}');
+      if (e.response?.statusCode == 404) {
+        return Left(NotFoundFailure('Evolved Pokémon not found'));
+      } else {
+        return Left(
+          NetworkFailure('Failed to fetch evolved Pokémon: ${e.message}'),
+        );
+      }
+    }
   }
 }
