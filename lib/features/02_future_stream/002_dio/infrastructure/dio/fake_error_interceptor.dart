@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 class FakeErrorInterceptor extends Interceptor {
-  int _count = 1;
+  int _count = 0;
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -14,6 +14,8 @@ class FakeErrorInterceptor extends Interceptor {
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     print('===== FakeErrorInterceptor Response =====');
     print('FakeErrorInterceptor が呼び出されました');
+
+    _count++;
     print('count: $_count');
 
     if (_count % 4 == 0) {
@@ -29,7 +31,6 @@ class FakeErrorInterceptor extends Interceptor {
         ),
       );
     }
-    _count++;
     return handler.next(response);
   }
 }

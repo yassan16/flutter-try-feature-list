@@ -19,10 +19,7 @@ class PokemonNotifier extends _$PokemonNotifier {
         final result = await ref
             .read(evolvePokemonUsecaseProvider)
             .evolvePokemon(state.value!);
-        return result.match(
-          (failure) => throw Exception(failure.message),
-          (data) => data,
-        );
+        return result.match((failure) => throw failure, (data) => data);
       });
     } catch (e) {
       state = AsyncError(e, StackTrace.current);

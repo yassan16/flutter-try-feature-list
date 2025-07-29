@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/failure.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/presentation/state/pokemon_notifier.dart';
 
 class DioScreen extends ConsumerStatefulWidget {
@@ -37,7 +38,14 @@ class _DioScreenState extends ConsumerState<DioScreen> {
                   ],
                 );
               },
-              error: (error, _) => Center(child: Text(error.toString())),
+              error: (error, _) {
+                if (error is Failure) {
+                  if (error is NotFoundFailure) {
+                    return Center(child: Text(error.message));
+                  }
+                }
+                return Center(child: Text('予期しないエラー: $error'));
+              },
               loading: () => const Center(child: CircularProgressIndicator()),
             ),
           ],
