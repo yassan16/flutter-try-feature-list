@@ -7,19 +7,11 @@ class PokemonApiClient {
 
   Future<PokemonDto> getPokemon() async {
     final response = await dio.get('https://pokeapi.co/api/v2/pokemon/4/');
-    if (response.statusCode == 200) {
-      return PokemonDto.fromJson(response.data);
-    } else {
-      throw Exception('Failed to load pokemon');
-    }
+    return PokemonDto.fromJson(response.data);
   }
 
   Future<PokemonDto> getEvlovePokemon(String id) async {
     final response = await dio.get('https://pokeapi.co/api/v2/pokemon/$id/');
-    if (response.statusCode == 200) {
-      return PokemonDto.fromJson(response.data);
-    } else {
-      throw Exception('Failed to load pokemon');
-    }
+    return PokemonDto.fromJson(response.data);
   }
 }
