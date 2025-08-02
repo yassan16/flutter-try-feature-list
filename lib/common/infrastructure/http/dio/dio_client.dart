@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dio/fake_error_interceptor.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dio/logging_interceptor.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dio/sample_interceptor.dart';
+import 'package:flutter_try_feature_list/common/infrastructure/http/dio/fake_error_interceptor.dart';
+import 'package:flutter_try_feature_list/common/infrastructure/http/dio/logging_interceptor.dart';
+import 'package:flutter_try_feature_list/common/infrastructure/http/dio/sample_interceptor.dart';
 
 class DioClient {
   // シングルトンインスタンス
