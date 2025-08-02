@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-/// 各 Branch の ベースとなる画面
+/// 各Branchのベースとなる画面
 class BaseScreen extends ConsumerStatefulWidget {
   const BaseScreen({super.key, required this.navigationShell});
   final StatefulNavigationShell navigationShell;
