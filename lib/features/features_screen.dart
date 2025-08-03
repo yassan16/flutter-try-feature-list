@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_try_feature_list/routing.dart';
 import 'package:go_router/go_router.dart';
 
+/// 機能一覧画面
 class FeaturesScreen extends StatefulWidget {
   const FeaturesScreen({super.key});
 
@@ -20,43 +21,23 @@ class _FeaturesScreenState extends State<FeaturesScreen> {
     final items = [
       {
         'text': '01_001 親子ウィジェットの再ビルド検証',
-        'onPressed': () {
-          String router = Routing.featuresScreenRouter + Routing.route_01_001;
-          GoRouter.of(context).go(router);
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('パス： $router')));
-        },
+        'router': Routing.featuresScreenRouter + Routing.route_01_001,
+      },
+      {
+        'text': '01_002 ListView.builderの実装サンプル',
+        'router': Routing.featuresScreenRouter + Routing.route_01_002,
       },
       {
         'text': '02_001 Httpパッケージを使ったAPI呼び出し検証',
-        'onPressed': () {
-          String router = Routing.featuresScreenRouter + Routing.route_02_001;
-          GoRouter.of(context).go(router);
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('パス： $router')));
-        },
+        'router': Routing.featuresScreenRouter + Routing.route_02_001,
       },
       {
         'text': '02_002 Dioパッケージを使ったAPI呼び出し検証',
-        'onPressed': () {
-          String router = Routing.featuresScreenRouter + Routing.route_02_002;
-          GoRouter.of(context).go(router);
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('パス： $router')));
-        },
+        'router': Routing.featuresScreenRouter + Routing.route_02_002,
       },
       {
         'text': '04_001 Providerの再ビルド検証',
-        'onPressed': () {
-          String router = Routing.featuresScreenRouter + Routing.route_04_001;
-          GoRouter.of(context).go(router);
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('パス： $router')));
-        },
+        'router': Routing.featuresScreenRouter + Routing.route_04_001,
       },
     ];
 
@@ -76,7 +57,7 @@ class _FeaturesScreenState extends State<FeaturesScreen> {
             return _buildFeatureCard(
               context,
               items[index]['text'] as String,
-              items[index]['onPressed'] as void Function(),
+              items[index]['router'] as String,
             );
           },
         ),
@@ -84,18 +65,19 @@ class _FeaturesScreenState extends State<FeaturesScreen> {
     );
   }
 
-  Widget _buildFeatureCard(
-    BuildContext context,
-    String text,
-    VoidCallback onPressed,
-  ) {
+  Widget _buildFeatureCard(BuildContext context, String text, String router) {
     return Card(
       elevation: 6,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       color: Colors.blue[50], // 見やすい青系の背景色
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
-        onTap: onPressed,
+        onTap: () {
+          GoRouter.of(context).go(router);
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('パス： $router')));
+        },
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(

@@ -26,6 +26,7 @@ class Routing {
   static final String route_01 = '/01_widget_tree';
   static final String route_01_001 =
       '$route_01/001_parent_child_widget_rebuild';
+  static final String route_01_002 = '$route_01/002_listview_builder';
 
   // 02_future_stream
   static final String route_02 = '/02_future_stream';
