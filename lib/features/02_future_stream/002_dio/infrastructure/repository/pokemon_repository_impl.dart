@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/failure.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon_repository.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/dto/pokemon_dto.dart';
+import 'package:flutter_try_feature_list/common/infrastructure/dto/pokemon/pokemon_dto.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/api_client/pokemon_api_client.dart';
 import 'package:fpdart/fpdart.dart';
 
