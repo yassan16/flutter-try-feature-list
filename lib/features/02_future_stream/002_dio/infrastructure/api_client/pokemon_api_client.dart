@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_try_feature_list/common/infrastructure/dto/pokemon/pokemon_dto.dart';
+import 'package:flutter_try_feature_list/common/infrastructure/dto/pokeapi/pokemon/pokemon_dto.dart';
 
 class PokemonApiClient {
   Dio dio;
