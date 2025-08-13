@@ -6,9 +6,11 @@ part of 'pokemon_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dioHash() => r'088d5c03610503c2407a8d7429b0e9f3ee76406f';
+String _$dioHash() => r'eab56cd7434d67a716dcccd36ba4369ddc834064';
 
-/// See also [dio].
+/// 各層の依存関係を管理するProvider
+///
+/// Copied from [dio].
 @ProviderFor(dio)
 final dioProvider = AutoDisposeProvider<Dio>.internal(
   dio,
@@ -22,7 +24,7 @@ final dioProvider = AutoDisposeProvider<Dio>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef DioRef = AutoDisposeProviderRef<Dio>;
-String _$pokemonServiceHash() => r'35f31863aeb26374267cbc21ca9cb5a775adfab8';
+String _$pokemonServiceHash() => r'47b869faa484eeb759dd32ce4153b50ce3a151e0';
 
 /// See also [pokemonService].
 @ProviderFor(pokemonService)

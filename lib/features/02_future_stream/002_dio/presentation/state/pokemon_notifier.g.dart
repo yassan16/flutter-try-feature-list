@@ -6,7 +6,7 @@ part of 'pokemon_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pokemonNotifierHash() => r'bd50221c68664a4aaa200d7c51c2db7016fddde6';
+String _$pokemonNotifierHash() => r'87e7d018261cbc5f0f5bc392c155adb5d52dda40';
 
 /// See also [PokemonNotifier].
 @ProviderFor(PokemonNotifier)

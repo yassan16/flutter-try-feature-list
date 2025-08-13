@@ -14,7 +14,7 @@ class DioClient {
     print('===== DioClient Initialized =====');
     print('DioClient が初期化されました');
     // dio.interceptors.add(SampleInterceptor());
-    dio.interceptors.add(FakeErrorInterceptor());
+    // dio.interceptors.add(FakeErrorInterceptor());
     dio.interceptors.add(LoggingInterceptor());
   }
 }
