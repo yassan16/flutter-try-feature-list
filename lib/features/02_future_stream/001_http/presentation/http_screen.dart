@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_try_feature_list/common/infrastructure/dto/pokeapi/pokemon/pokemon_dto.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/001_http/application/get_pokemon_usecase.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/001_http/infrastructure/dto/pokemon_dto.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/001_http/infrastructure/repository/pokemon_repositoryImpl.dart';
+import 'package:flutter_try_feature_list/features/02_future_stream/001_http/infrastructure/repository/pokemon_repositoryimpl.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/001_http/infrastructure/service/pokemon_service.dart';
 
 class HttpScreen extends ConsumerStatefulWidget {

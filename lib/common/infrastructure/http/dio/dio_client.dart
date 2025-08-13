@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_try_feature_list/common/infrastructure/http/dio/fake_error_interceptor.dart';
 import 'package:flutter_try_feature_list/common/infrastructure/http/dio/logging_interceptor.dart';
 
 class DioClient {
