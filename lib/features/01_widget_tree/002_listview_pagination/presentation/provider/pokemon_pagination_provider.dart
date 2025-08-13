@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_try_feature_list/common/infrastructure/http/dio/dio_client.dart';
-import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_builder/aplication/pokemon_pagination_usecase.dart';
-import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_builder/domain/pokemon_pagination_repository.dart';
-import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_builder/infrastructure/api_client/pokemon_pagination_api_client.dart';
-import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_builder/infrastructure/repository/pokemon_pagination_repositoryimpl.dart';
+import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/aplication/pokemon_pagination_usecase.dart';
+import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/domain/pokemon_pagination_repository.dart';
+import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/infrastructure/api_client/pokemon_pagination_api_client.dart';
+import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/infrastructure/repository/pokemon_pagination_repositoryimpl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'pokemon_pagination_provider.g.dart';

@@ -1,5 +1,5 @@
-import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_builder/domain/pokemon_pagination.dart';
-import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_builder/presentation/provider/pokemon_pagination_provider.dart';
+import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/domain/pokemon_pagination.dart';
+import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/presentation/provider/pokemon_pagination_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'pokemon_pagination_notifier.g.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_builder/domain/pokemon_002.dart';
+import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/domain/pokemon_002.dart';
 
 class PokemonPaginationEntitiy {
   final List<Pokemon002> listPokemon;

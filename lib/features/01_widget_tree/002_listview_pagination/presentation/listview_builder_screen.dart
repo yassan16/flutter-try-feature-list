@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_builder/presentation/state/pokemon_pagination_notifier.dart';
+import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/presentation/state/pokemon_pagination_notifier.dart';
 
 /// 002_ListView.builderのサンプル画面
 class ListviewBuilderScreen extends ConsumerStatefulWidget {
