@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/failure.dart';
+import 'package:flutter_try_feature_list/exceptions/either.dart';
+import 'package:flutter_try_feature_list/exceptions/failure.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon_repository.dart';
 import 'package:flutter_try_feature_list/common/infrastructure/dto/pokeapi/pokemon/pokemon_dto.dart';

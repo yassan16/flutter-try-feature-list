@@ -1,5 +1,5 @@
+import 'package:flutter_try_feature_list/exceptions/either.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/pokemon_repository.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/infrastructure/repository/pokemon_repository_impl.dart';
 
 class EvolvePokemonUsecase {

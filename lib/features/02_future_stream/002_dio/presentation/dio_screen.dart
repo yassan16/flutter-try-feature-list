@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/domain/failure.dart';
+import 'package:flutter_try_feature_list/exceptions/failure.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/presentation/state/pokemon_notifier.dart';
 
 class DioScreen extends ConsumerStatefulWidget {
