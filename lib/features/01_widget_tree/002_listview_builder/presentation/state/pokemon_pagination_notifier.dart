@@ -4,6 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'pokemon_pagination_notifier.g.dart';
 
+/// 責務：ポケモンのページネーション状態を管理する
 @riverpod
 class PokemonPaginationNotifier extends _$PokemonPaginationNotifier {
   @override
@@ -11,17 +12,15 @@ class PokemonPaginationNotifier extends _$PokemonPaginationNotifier {
     return await ref.watch(pokemonPaginationUsecaseProvider).execute(null);
   }
 
-  // Future<void> fetchNextPage() async {
-  //   if (state.isLoading || !state.hasNextPage) return;
+  Future<void> fetchNextPage() async {
+    // 次のページがない場合は何もしない
+    if (state.value?.nextUrl == null) return;
 
-  //   state = const AsyncValue.loading();
-  //   try {
-  //     final nextPage = await ref
-  //         .watch(pokemonRepositoryimplProvider)
-  //         .fetchNextPage(state.value!.nextUrl);
-  //     state = AsyncValue.data(nextPage);
-  //   } catch (e) {
-  //     state = AsyncValue.error(e);
-  //   }
-  // }
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      return ref
+          .read(pokemonPaginationUsecaseProvider)
+          .execute(state.value?.nextUrl);
+    });
+  }
 }

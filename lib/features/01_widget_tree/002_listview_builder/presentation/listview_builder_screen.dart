@@ -12,6 +12,30 @@ class ListviewBuilderScreen extends ConsumerStatefulWidget {
 }
 
 class _ListviewBuilderScreenState extends ConsumerState<ListviewBuilderScreen> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    // スクロール位置が末尾付近なら次ページ取得
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - 200) {
+      // ページネーション用のメソッドを呼び出し
+      ref.read(pokemonPaginationNotifierProvider.notifier).fetchNextPage();
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final result = ref.watch(pokemonPaginationNotifierProvider);
@@ -21,6 +45,7 @@ class _ListviewBuilderScreenState extends ConsumerState<ListviewBuilderScreen> {
       body: result.when(
         data: (data) {
           return ListView.builder(
+            controller: _scrollController,
             itemCount: data.listPokemon.length,
             itemBuilder: (context, index) {
               final pokemon = data.listPokemon[index];
