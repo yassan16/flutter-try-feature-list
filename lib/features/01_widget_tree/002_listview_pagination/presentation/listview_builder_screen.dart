@@ -46,9 +46,9 @@ class _ListviewBuilderScreenState extends ConsumerState<ListviewBuilderScreen> {
         data: (data) {
           return ListView.builder(
             controller: _scrollController,
-            itemCount: data.listPokemon.length,
+            itemCount: data.pokemonList.length,
             itemBuilder: (context, index) {
-              final pokemon = data.listPokemon[index];
+              final pokemon = data.pokemonList[index];
               return Column(
                 children: [
                   Text(pokemon.name),

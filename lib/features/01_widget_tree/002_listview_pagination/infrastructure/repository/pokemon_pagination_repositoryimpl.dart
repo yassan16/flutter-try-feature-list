@@ -29,7 +29,7 @@ class PokemonPaginationRepositoryimpl extends PokemonPaginationRepository {
 
       // dtoからドメインモデルへ変換
       return PokemonPaginationEntitiy(
-        listPokemon: pokemonList,
+        pokemonList: pokemonList,
         nextUrl: paginationDto.next,
       );
     } on DioException catch (e) {
