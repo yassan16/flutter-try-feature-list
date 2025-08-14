@@ -44,11 +44,13 @@ class _ListviewBuilderScreenState extends ConsumerState<ListviewBuilderScreen> {
       appBar: AppBar(title: const Text('ListView.builder Sample')),
       body: result.when(
         data: (data) {
+          // copyWithPreviousは、前回のstateを保持するためこちらに分岐
           return ListView.builder(
             controller: _scrollController,
             itemCount: data.pokemonList.length,
             itemBuilder: (context, index) {
               final pokemon = data.pokemonList[index];
+              // 次のページがある場合、リストの末尾に読み込み中のインジケーターを表示
               return Column(
                 children: [
                   Text(pokemon.name),

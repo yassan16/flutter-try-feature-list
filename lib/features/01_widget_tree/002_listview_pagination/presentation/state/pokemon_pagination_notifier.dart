@@ -13,20 +13,34 @@ class PokemonPaginationNotifier extends _$PokemonPaginationNotifier {
     return await ref.watch(pokemonPaginationUsecaseProvider).execute(null);
   }
 
+  /// 次のページを取得する
   Future<void> fetchNextPage() async {
+    // 読み込み中の状態であれば何もしない
+    if (state ==
+        const AsyncLoading<PokemonPaginationEntitiy>().copyWithPrevious(
+          state,
+        )) {
+      return;
+    }
+
+    final previousState = state;
+    final PokemonPaginationEntitiy? paginationEntitiy = state.value;
     // 次のページがない場合は何もしない
-    if (state.value?.nextUrl == null) return;
+    if (paginationEntitiy?.nextUrl == null) return;
 
     // fetch前のリストを保持
-    final List<Pokemon002> previousList = state.value?.pokemonList ?? [];
+    final List<Pokemon002> previousList = paginationEntitiy?.pokemonList ?? [];
     if (previousList.isEmpty) return;
 
-    // 次のページを取得
-    state = const AsyncValue.loading();
+    // 前ページの状態を保持
+    state = const AsyncLoading<PokemonPaginationEntitiy>().copyWithPrevious(
+      previousState,
+    );
+
     state = await AsyncValue.guard(() async {
       final result = await ref
           .read(pokemonPaginationUsecaseProvider)
-          .execute(state.value?.nextUrl);
+          .execute(paginationEntitiy?.nextUrl);
 
       // fetch前のリストを追加
       result.addPokemonList(previousList);
