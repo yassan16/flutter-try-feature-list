@@ -45,12 +45,49 @@ class _ListviewBuilderScreenState extends ConsumerState<ListviewBuilderScreen> {
       body: result.when(
         data: (data) {
           // copyWithPreviousは、前回のstateを保持するためこちらに分岐
+          final hasNext = data.nextUrl != null;
           return ListView.builder(
             controller: _scrollController,
-            itemCount: data.pokemonList.length,
+            itemCount:
+                hasNext ? data.pokemonList.length + 1 : data.pokemonList.length,
             itemBuilder: (context, index) {
+              if (hasNext && index == data.pokemonList.length) {
+                // 末尾にローディングインジケーターを表示
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 24.0),
+                  child: Center(
+                    child: Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.lightBlueAccent.withValues(alpha: 0.2),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                              color: Colors.lightBlue,
+                            ),
+                          ),
+                          SizedBox(width: 12),
+                          Text(
+                            '読み込み中...',
+                            style: TextStyle(
+                              color: Colors.lightBlue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              }
               final pokemon = data.pokemonList[index];
-              // 次のページがある場合、リストの末尾に読み込み中のインジケーターを表示
               return Column(
                 children: [
                   Text(pokemon.name),
