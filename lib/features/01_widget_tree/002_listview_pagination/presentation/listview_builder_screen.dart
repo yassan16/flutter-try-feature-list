@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/presentation/state/pokemon_pagination_notifier.dart';
+import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/presentation/components/loading_indicator_002.dart';
 
 /// 002_ListView_Pagination
 class ListviewBuilderScreen extends ConsumerStatefulWidget {
@@ -52,40 +53,8 @@ class _ListviewBuilderScreenState extends ConsumerState<ListviewBuilderScreen> {
                 hasNext ? data.pokemonList.length + 1 : data.pokemonList.length,
             itemBuilder: (context, index) {
               if (hasNext && index == data.pokemonList.length) {
-                // 末尾にローディングインジケーターを表示
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24.0),
-                  child: Center(
-                    child: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.lightBlueAccent.withValues(alpha: 0.2),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      child: const Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SizedBox(
-                            width: 24,
-                            height: 24,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 3,
-                              color: Colors.lightBlue,
-                            ),
-                          ),
-                          SizedBox(width: 12),
-                          Text(
-                            '読み込み中...',
-                            style: TextStyle(
-                              color: Colors.lightBlue,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
+                // 末尾にLoadingIndicatorを表示
+                return const LoadingIndicator002();
               }
               final pokemon = data.pokemonList[index];
               return Column(
