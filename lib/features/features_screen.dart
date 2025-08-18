@@ -24,7 +24,7 @@ class _FeaturesScreenState extends State<FeaturesScreen> {
         'router': Routing.featuresScreenRouter + Routing.route_01_001,
       },
       {
-        'text': '01_002 ListView.builderの実装サンプル',
+        'text': '01_002 ListView-Paginationの実装サンプル',
         'router': Routing.featuresScreenRouter + Routing.route_01_002,
       },
       {

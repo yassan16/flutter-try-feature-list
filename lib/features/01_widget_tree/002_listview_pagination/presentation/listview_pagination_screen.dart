@@ -4,15 +4,17 @@ import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pa
 import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/presentation/components/loading_indicator_002.dart';
 
 /// 002_ListView_Pagination
-class ListviewBuilderScreen extends ConsumerStatefulWidget {
-  const ListviewBuilderScreen({super.key});
+/// ListviewPagination
+class ListviewPaginationScreen extends ConsumerStatefulWidget {
+  const ListviewPaginationScreen({super.key});
 
   @override
-  ConsumerState<ListviewBuilderScreen> createState() =>
+  ConsumerState<ListviewPaginationScreen> createState() =>
       _ListviewBuilderScreenState();
 }
 
-class _ListviewBuilderScreenState extends ConsumerState<ListviewBuilderScreen> {
+class _ListviewBuilderScreenState
+    extends ConsumerState<ListviewPaginationScreen> {
   final ScrollController _scrollController = ScrollController();
 
   @override
