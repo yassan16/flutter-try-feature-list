@@ -39,6 +39,10 @@ class _FeaturesScreenState extends State<FeaturesScreen> {
         'text': '04_001 Providerの再ビルド検証',
         'router': Routing.featuresScreenRouter + Routing.route_04_001,
       },
+      {
+        'text': '99_001 スクリーンショットの防止',
+        'router': Routing.featuresScreenRouter + Routing.route_99_001,
+      },
     ];
 
     return Scaffold(
