@@ -14,12 +14,7 @@ class PreventScreenshotScreen99001State
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Prevent Screenshot')),
-      body: Center(
-        child: Text(
-          'This screen prevents screenshots.',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
+      body: Center(child: Text('Prevent Screenshot Screen')),
     );
   }
 }
