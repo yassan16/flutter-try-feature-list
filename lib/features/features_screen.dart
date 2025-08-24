@@ -41,6 +41,10 @@ class _FeaturesScreenState extends State<FeaturesScreen> {
       },
       {
         'text': '99_001 スクリーンショットの防止',
+        'router': Routing.featuresScreenRouter + Routing.route_90_001,
+      },
+      {
+        'text': '99_001 ドミネーター',
         'router': Routing.featuresScreenRouter + Routing.route_99_001,
       },
     ];

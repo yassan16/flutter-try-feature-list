@@ -4,7 +4,8 @@ import 'package:flutter_try_feature_list/features/01_widget_tree/001_parent_chil
 import 'package:flutter_try_feature_list/features/01_widget_tree/002_listview_pagination/presentation/listview_pagination_screen.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/001_http/presentation/http_screen.dart';
 import 'package:flutter_try_feature_list/features/02_future_stream/002_dio/presentation/dio_screen.dart';
-import 'package:flutter_try_feature_list/features/99_other/001_screenshot_prevention/prevent_screenshot_screen.dart';
+import 'package:flutter_try_feature_list/features/90_other/001_screenshot_prevention/prevent_screenshot_screen.dart';
+import 'package:flutter_try_feature_list/features/99_playground/001_dominator/dominator_screen.dart';
 import 'package:flutter_try_feature_list/features/features_screen.dart';
 import 'package:flutter_try_feature_list/mapbox/presentation/mapbox_screen.dart';
 import 'package:flutter_try_feature_list/features/04_riverpod/001_provider_verification/provider_verification_screen.dart';
@@ -39,9 +40,13 @@ class Routing {
   static final String route_04 = '/04_riverpod';
   static final String route_04_001 = '$route_04/001_providerVerification';
 
-  // 99_other
-  static final String route_99 = '/99_other';
-  static final String route_99_001 = '$route_99/001_screenshot_prevention';
+  // 90_other
+  static final String route_90 = '/90_other';
+  static final String route_90_001 = '$route_90/001_screenshot_prevention';
+
+  // 99_playground
+  static final String route_99 = '/99_playground';
+  static final String route_99_001 = '$route_99/001_dominator';
 
   // Mapbox Branch
   static final String bScreenRouter = '/b';
@@ -94,10 +99,15 @@ class Routing {
                     builder:
                         (context, state) => ProviderVerificationScreen001(),
                   ),
-                  // 99_other
+                  // 90_other
+                  GoRoute(
+                    path: route_90_001,
+                    builder: (context, state) => PreventScreenshotScreen90001(),
+                  ),
+                  // 99_playground
                   GoRoute(
                     path: route_99_001,
-                    builder: (context, state) => PreventScreenshotScreen99001(),
+                    builder: (context, state) => DominatorScreen99001(),
                   ),
                 ],
               ),
